@@ -1,14 +1,15 @@
 <template>
   <div>
-    首页
+    导航
   </div>
 </template>
 
 <script>
-export default{
-  name: 'Home',
+export default {
+    name: 'Nav'
 }
 </script>
 
-<style lang="scss">
+<style>
+
 </style>

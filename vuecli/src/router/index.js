@@ -1,11 +1,45 @@
-import VueRouter from "vue-router";
-import Home from "../view/Home.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../view/Home.vue'
+import Layout from '../view/Layout.vue'
 
-export default new VueRouter({
-    routes:[
-        {
-            path: '/home',
-            component: Home, 
-        },
-    ]
+Vue.use(VueRouter)
+
+const routes = [
+    {
+        path:'/',
+        name: 'Layout',
+        component: Layout,
+        children: [
+            {
+                path: '/',
+                name: 'Home',
+                component: Home,
+            },
+            {
+                path: '/topic',
+                name: 'Topic',
+                // 箭头函数，解析路径
+                component: ()=>import("../view/Topic.vue"),
+            },
+            {
+                path: '/search',
+                name: 'Search',
+                component: ()=>import("../view/Search.vue"),
+            },
+            {
+                path: '/mine',
+                name: 'Mine',
+                component: ()=>import("../view/Mine.vue"),
+            },
+        ]
+    },
+]//写路由
+
+const router=new VueRouter({
+    mode: 'hash',
+    base: process.env.BASE_URL,
+    routes
 })
+
+export default router

@@ -1,16 +1,16 @@
 <template>
     <div>
-        <transition>
+        视图
         <router-view></router-view>
-        </transition>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'App',
+    name:'Layout'
 }
 </script>
 
-<style lang="scss">
+<style>
+
 </style>
