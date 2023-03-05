@@ -1,12 +1,14 @@
 <template>
     <div>
-        视图
+        <Nav/>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+import Nav from '../components/Nav.vue'
 export default {
+    components: { Nav },
     name:'Layout'
 }
 </script>

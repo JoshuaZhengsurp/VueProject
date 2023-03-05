@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../view/Home.vue'
+import Home from '../view/Home'
 import Layout from '../view/Layout.vue'
 
 Vue.use(VueRouter)
@@ -39,7 +39,10 @@ const routes = [
 const router=new VueRouter({
     mode: 'hash',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    linkActiveClass:"active",
+    // linkActiveClass:"active"
+    // 当处在该路由时,激活该样式
 })
 
 export default router
