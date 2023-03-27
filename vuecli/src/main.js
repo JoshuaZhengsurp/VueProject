@@ -1,20 +1,18 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import './assets/css/common.css'
+import "./assets/css/common.css"
+import api from "./api"
+import "./assets/font/iconfont.css"
+import Tabs from "./components/tabs"
+import BackTop from "./components/backtop"
 
-Vue.config.productionTip=false
-Vue.use(VueRouter)
+Vue.use(Tabs)
+Vue.use(BackTop)
+Vue.prototype.$api = api;
+Vue.config.productionTip = false
 
 new Vue({
-    el:"#app",
-    render:h=>h(App),
-    beforeCreate(){
-        Vue.prototype.$bus=this
-    },
-    store,
-    router:router,
-    // store,
-})
+  router,
+  render: h => h(App)
+}).$mount('#app')

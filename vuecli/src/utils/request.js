@@ -1,10 +1,10 @@
 import axios from "axios"
-import qs from "querystring"
+import qs from "qs"
 
-const errorHandle=(status,info)=>{
+const errorHandle = (status,info) =>{
     switch(status){
         case 400:
-            console.log("服务器收到客户端通过PUT或者POST请求提交的表示，表示的格式正确，但服务器不懂它什么意思")
+            console.log("服务器收到客户端通过PUT或者POST请求提交的表示，表示的格式正确，但服务器不懂它什么意思");
             break;
         case 401:
             console.log("客户端试图对一个受保护的资源进行操作，却又没有提供正确的认证证书");
@@ -24,31 +24,31 @@ const errorHandle=(status,info)=>{
         default:
             console.log(info);
             break;
-
     }
 }
 
-//创建axios实例对象
+// 创建axios的实例对象
 const instance = axios.create({
     timeout:5000
 })
 
-//处理并发请求方法
-instance.all=axios.all;
-instance.spread=axios.spread;
+// 处理并发请求方法
+instance.all = axios.all;
+instance.spread = axios.spread
 
-//全局配置
-//instance.defaults.baseURL = "http:iweniki.com"
-instance.defaults.heahers.post['Content-Type']='application/x-www-form-urlencoded';
+// 全局配置
+// instance.defaults.baseURL = "http://iwenwiki.com";
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-//请求拦截和响应拦截
+// 请求拦截和响应拦截
 instance.interceptors.request.use(
-    config=>{
-        if(config.method==='post'){
-            config.data=qs.stringify(config.data);
+    config =>{
+        if(config.method === 'post'){
+            config.data = qs.stringify(config.data);
         }
         return config
     },
+    // 为什么这里要用Promise返回
     error => Promise.reject(error)
 )
 
@@ -71,6 +71,7 @@ instance.interceptors.response.use(
 /**
  * 提供get和post的请求方式
  */
+
 export function get(url,params){
     return new Promise((resolve,reject) =>{
         instance.get(url,{
