@@ -1,4 +1,4 @@
-# vuecli
+# qa-extension
 
 ## Project setup
 ```
