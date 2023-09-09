@@ -1,17 +1,20 @@
 <template>
-    <div class="view"></div>
+    <div>
+        <result />
+    </div>
 </template>
 
-<script>
-export default {
-    name:'Home',
-}
+<script setup>
+import result from '@/components/result.vue'
 </script>
 
 <style>
-.view{
-    background: yellow;
-    height: 100%;
-    width: 100%;
+.view {
+    background: gray;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 </style>
